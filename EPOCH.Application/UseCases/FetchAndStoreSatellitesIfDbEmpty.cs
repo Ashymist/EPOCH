@@ -1,6 +1,5 @@
 ﻿using EPOCH.Application.DTOs;
 using EPOCH.Application.Interfaces;
-using EPOCH.Application.Mappers;
 using EPOCH.Domain.Entities;
 using EPOCH.Domain.Interfaces;
 using EPOCH.Domain.Services;
@@ -15,14 +14,12 @@ namespace EPOCH.Application.UseCases
 {
     public class FetchAndStoreSatellitesIfDbEmptyUseCase
     {
-        private readonly ISatelliteClassifier _classifier;
         private readonly ISatelliteRepository _repository;
         private readonly ITleApiClient _tleApiClient;
         private readonly ISatelliteFactory _satelliteFactory;
 
-        public FetchAndStoreSatellitesIfDbEmptyUseCase(ISatelliteClassifier classifier, ISatelliteRepository repository, ITleApiClient tleApiClient, ISatelliteFactory satelliteFactory)
+        public FetchAndStoreSatellitesIfDbEmptyUseCase(ISatelliteRepository repository, ITleApiClient tleApiClient, ISatelliteFactory satelliteFactory)
         {
-            _classifier = classifier;
             _repository = repository;
             _tleApiClient = tleApiClient;
             _satelliteFactory = satelliteFactory;

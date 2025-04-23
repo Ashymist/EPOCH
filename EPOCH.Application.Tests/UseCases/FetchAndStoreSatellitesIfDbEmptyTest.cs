@@ -20,12 +20,11 @@ namespace EPOCH.Application.Tests.UseCases
         private readonly Mock<ISatelliteRepository> _repositoryMock = new();
         private readonly Mock<ITleApiClient> _apiClientMock = new();
         private readonly Mock<ISatelliteFactory> _factoryMock = new();
-        private readonly Mock<ISatelliteClassifier> _classifierMock = new();
 
         private readonly FetchAndStoreSatellitesIfDbEmptyUseCase _useCase;
 
         public FetchAndStoreSatellitesIfDbEmptyTest() {
-            _useCase = new FetchAndStoreSatellitesIfDbEmptyUseCase(_classifierMock.Object, _repositoryMock.Object, _apiClientMock.Object, _factoryMock.Object);
+            _useCase = new FetchAndStoreSatellitesIfDbEmptyUseCase(_repositoryMock.Object, _apiClientMock.Object, _factoryMock.Object);
         }
 
         [Fact]

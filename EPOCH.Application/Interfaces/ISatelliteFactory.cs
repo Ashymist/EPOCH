@@ -1,5 +1,4 @@
 ﻿using EPOCH.Domain.Entities;
-using EPOCH.Domain.Enums;
 using EPOCH.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -7,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EPOCH.Domain.Services
+namespace EPOCH.Application.Interfaces
 {
-    public interface ISatelliteClassifier
+    public interface ISatelliteFactory
     {
-        SatelliteGroup GetSatelliteGroup(Tle tleData);
+        Satellite Create(string name, Tle tle);
     }
 }

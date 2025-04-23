@@ -13,8 +13,6 @@ namespace EPOCH.Domain.Enums
         SpaceStation,
         Navigation,
         Weather,
-        Debris,
-        Military,
         Other
     }
 }

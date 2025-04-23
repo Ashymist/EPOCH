@@ -1,4 +1,5 @@
-﻿using EPOCH.Domain.Entities;
+﻿using EPOCH.Application.DTOs;
+using EPOCH.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

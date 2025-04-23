@@ -11,7 +11,7 @@ namespace EPOCH.Domain.Interfaces
     {
         Task<Satellite?> GetByNoradIdAsync(int noradId);
         Task<IEnumerable<Satellite>> GetAllAsync();
-        Task RefreshAllAsync(IEnumerable<Satellite> satellites);
+        Task ReplaceAllAsync(IEnumerable<Satellite> satellites);
         Task DeleteAllAsync();
 
     }

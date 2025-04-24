@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EPOCH.Application\EPOCH.Application.csproj" />
+    <ProjectReference Include="..\EPOCH.Domain\EPOCH.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

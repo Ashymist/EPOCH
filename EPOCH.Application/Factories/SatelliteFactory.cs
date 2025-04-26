@@ -20,7 +20,7 @@ namespace EPOCH.Application.Factories
 
         public Satellite Create(string name, Tle tle) {
 
-            if (!int.TryParse(tle.TleLine1.Substring(2, 6), out int noradid))
+            if (!int.TryParse(tle.TleLine1.Substring(2, 5), out int noradid))
             {
                 throw new ArgumentException("Invalid NORAD ID in TLE line 1");
             }

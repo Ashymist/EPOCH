@@ -1,6 +1,7 @@
 ﻿using EPOCH.Domain.Enums;
 using EPOCH.Domain.ValueObjects;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace EPOCH.Domain.Entities
 {
@@ -12,19 +13,23 @@ namespace EPOCH.Domain.Entities
         private Tle _tleData = null!;
         private SatelliteGroup _group;
 
-        public required string Name {
-            get => _name;
-            init{ 
-                ValidateName(value);
-                _name = value;
-            } 
-        }
+        
+        [Key]
         public required int NoradId {
             get => _noradId;
             init { 
                 ValidateNoradId(value);
                 _noradId = value;
             } 
+        }
+        public required string Name
+        {
+            get => _name;
+            init
+            {
+                ValidateName(value);
+                _name = value;
+            }
         }
 
         public required Tle TleData {

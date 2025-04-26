@@ -17,7 +17,7 @@ namespace EPOCH.Infrastructure.Clients
         }
 
         public async Task<IEnumerable<SatelliteDto>> GetAllSatellites() {
-            var response = _httpClient.GetAsync("https://celestrak.org/NORAD/elements/gp.php?CATNR=25118&FORMAT=tle");
+            var response = _httpClient.GetAsync("https://celestrak.org/NORAD/elements/gp.php?GROUP=active&FORMAT=TLE");
             string content = await response.Result.Content.ReadAsStringAsync();
             
             List<SatelliteDto> dtoList = new();
@@ -27,8 +27,8 @@ namespace EPOCH.Infrastructure.Clients
             for (int i = 0; i < contentLines.Length; i += 3) {
                 dtoList.Add(new SatelliteDto { 
                     Name = contentLines[i], 
-                    TleLine1 = contentLines[i + 1], 
-                    TleLine2 = contentLines[i + 2] 
+                    TleLine1 = contentLines[i + 1].TrimEnd('\r'), 
+                    TleLine2 = contentLines[i + 2].TrimEnd('\r')
                 });
             }
 

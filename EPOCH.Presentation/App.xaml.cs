@@ -8,6 +8,7 @@ using EPOCH.Infrastructure.Persistence;
 using EPOCH.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using OpenTK.Wpf;
 using System.Configuration;
 using System.Data;
 using System.IO;
@@ -21,6 +22,9 @@ namespace EPOCH.Presentation;
 /// </summary>
 public partial class App : System.Windows.Application
 {
+
+    public IServiceProvider? ServiceProvider { get; private set; }
+
     protected override void OnStartup(StartupEventArgs e)
     {
         string directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "EPOCH");
@@ -38,8 +42,11 @@ public partial class App : System.Windows.Application
         services.AddSingleton<ISatelliteFactory, SatelliteFactory>();
         services.AddScoped<ISatelliteRepository, SatelliteRepository>();
         services.AddScoped<FetchAndStoreSatellitesIfDbEmptyUseCase>();
+        services.AddScoped<GetAllSatellitesUseCase>();
 
         var serviceProvider = services.BuildServiceProvider();
+        ServiceProvider = serviceProvider;
+
 
         var scope = serviceProvider.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
@@ -55,6 +62,8 @@ public partial class App : System.Windows.Application
         }).GetAwaiter().GetResult();
 
         base.OnStartup(e);
+
+        
     }
 }
 
